@@ -31,3 +31,9 @@ __bundle__
 
 node_modules
 lnbits/static/bundle.*
+.idea/lnbits.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/.gitignore
