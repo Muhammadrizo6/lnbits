@@ -33,4 +33,5 @@ async def print_qr(link_id):
         count = count + 1
     page_link = list(chunks(links, 2))
     linked = list(chunks(page_link, 5))
+    print(link)
     return await render_template("withdraw/print_qr.html", link=linked, unique=True)
