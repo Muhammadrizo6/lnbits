@@ -20,7 +20,8 @@
         <div class="row q-mt-lg">
           <q-btn outline color="grey" @click="copyText('{{ link.lnurl }}')"
             >Copy LNURL</q-btn>
-            <q-btn outline color="grey" @click="copyText(this.here + '/?lightning={{ link.lnurl }}')"
+            &nbsp;
+            <q-btn outline color="grey" @click="copyText(location.protocol + '//' + location.host + '/?lightning={{ link.lnurl }}')"
             >Copy Link</q-btn>
         </div>
       </q-card-section>
