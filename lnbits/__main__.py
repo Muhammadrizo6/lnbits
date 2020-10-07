@@ -2,6 +2,10 @@ from .app import create_app
 from .commands import migrate_databases, transpile_scss, bundle_vendored
 from .settings import LNBITS_SITE_TITLE, SERVICE_FEE, DEBUG, LNBITS_DATA_FOLDER, WALLET, LNBITS_COMMIT
 
+import logging
+
+logging.warning("running __main__.py")
+
 migrate_databases()
 transpile_scss()
 bundle_vendored()
