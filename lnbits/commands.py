@@ -4,6 +4,7 @@ import importlib
 import re
 import os
 import sqlite3
+import logging
 
 from .core import migrations as core_migrations
 from .db import open_db, open_ext_db
@@ -33,12 +34,14 @@ def transpile_scss():
 
 
 def bundle_vendored():
+    logging.warning("bundle_vendored")
     for getfiles, outputpath in [
         (get_js_vendored, os.path.join(LNBITS_PATH, "static/bundle.js")),
         (get_css_vendored, os.path.join(LNBITS_PATH, "static/bundle.css")),
     ]:
         output = ""
         for path in getfiles():
+            logging.warning("path: "+path)
             with open(path) as f:
                 output += "/* " + url_for_vendored(path) + " */\n" + f.read() + ";\n"
         with open(outputpath, "w") as f:

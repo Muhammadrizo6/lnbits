@@ -13,6 +13,8 @@ from .helpers import get_valid_extensions, get_js_vendored, get_css_vendored, ur
 from .proxy_fix import ASGIProxyFix
 from .tasks import run_deferred_async, invoice_listener, webhook_handler, grab_app_for_later
 
+import logging
+
 secure_headers = SecureHeaders(hsts=False)
 
 
@@ -69,12 +71,16 @@ def register_commands(app: QuartTrio):
 def register_assets(app: QuartTrio):
     """Serve each vendored asset separately or a bundle."""
 
+    logging.warning("register_assets")
+
     @app.before_request
     async def vendored_assets_variable():
         if app.config["DEBUG"]:
+            logging.warning("vendor_map")
             g.VENDORED_JS = map(url_for_vendored, get_js_vendored())
             g.VENDORED_CSS = map(url_for_vendored, get_css_vendored())
         else:
+            logging.warning("bundle.css")
             g.VENDORED_JS = ["/static/bundle.js"]
             g.VENDORED_CSS = ["/static/bundle.css"]
 
